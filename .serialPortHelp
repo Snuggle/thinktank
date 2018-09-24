@@ -1,0 +1,5 @@
+#!/bin/sh
+#sudo usermod -a -G dialout username
+ls -lah /dev/ttyACM*
+read
+sudo usermod -a -G uucp username
