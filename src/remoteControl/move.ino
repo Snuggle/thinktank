@@ -1,8 +1,10 @@
 // Simple modular library for moving the robot.
 
-void enableMotors(){ // Enable the motors.
-  digitalWrite(ENA, HIGH);
-  digitalWrite(ENB, HIGH);
+void enableMotors(int speed){ // Enable the motors.
+  //digitalWrite(ENA, HIGH);
+  //digitalWrite(ENB, HIGH);
+  analogWrite(ENA, speed);
+  analogWrite(ENB, speed);
 }
 
 void disableMotors(){ // Disable motors.
@@ -11,8 +13,8 @@ void disableMotors(){ // Disable motors.
 }
 
 // direction: 0 stop, 1 forward, 2 backward, 3 left, 4 right.
-void move(int direction) {
-  enableMotors();
+void move(int direction, int speed=255) { // Default is full-speed.
+  enableMotors(speed);
   switch (direction) {
     case 0: // Stop
       digitalWrite(IN1, LOW);

@@ -20,7 +20,6 @@
 #define IN2 8
 #define IN3 9
 #define IN4 11
-#define carSpeed 255
 
 IRrecv irrecv(RECV_PIN);
 decode_results results;
@@ -37,7 +36,7 @@ void setup() {
   pinMode(ENA,OUTPUT);
   pinMode(ENB,OUTPUT);
   irrecv.enableIRIn();
-  enableMotors();
+  enableMotors(255);
 }
 
 void loop() {
@@ -62,7 +61,7 @@ void loop() {
     }
   }
   else {
-    if(millis() - preMillis > 130) {
+    if(millis() - preMillis > 150) {
       disableMotors();
       preMillis = millis();
     }
